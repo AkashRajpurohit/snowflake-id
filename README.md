@@ -52,9 +52,9 @@ yarn add @akashrajpurohit/snowflake-id
 Here's an example of how to use `@akashrajpurohit/snowflake-id`:
 
 ```javascript
-const SnowflakeId = require('@akashrajpurohit/snowflake-id');
+const { SnowflakeId } = require('@akashrajpurohit/snowflake-id');
 
-const snowflake = new SnowflakeId({
+const snowflake = SnowflakeId({
   workerId: 1,
   nodeIdBits: 10,
   sequenceBits: 12,
@@ -98,9 +98,9 @@ If this happens, the library throws an Error with the message `Clock is moving b
 Here's an example of how to generate 10 IDs:
 
 ```javascript
-const SnowflakeId = require('@akashrajpurohit/snowflake-id');
+const { SnowflakeId } = require('@akashrajpurohit/snowflake-id');
 
-const snowflake = new SnowflakeId();
+const snowflake = SnowflakeId();
 
 for (let i = 0; i < 10; i++) {
   console.log(snowflake.generate());
@@ -110,10 +110,10 @@ for (let i = 0; i < 10; i++) {
 And here's an example of how to generate IDs using different worker IDs:
 
 ```javascript
-const SnowflakeId = require('@akashrajpurohit/snowflake-id');
+const { SnowflakeId } = require('@akashrajpurohit/snowflake-id');
 
-const worker1 = new SnowflakeId({ workerId: 1 });
-const worker2 = new SnowflakeId({ workerId: 2 });
+const worker1 = SnowflakeId({ workerId: 1 });
+const worker2 = SnowflakeId({ workerId: 2 });
 
 console.log(worker1.generate()); // Generates an ID with worker ID 1
 console.log(worker2.generate()); // Generates an ID with worker ID 2
