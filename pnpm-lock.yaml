@@ -1,6 +1,10 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@semantic-release/commit-analyzer': ^9.0.2
+  '@semantic-release/github': ^8.0.7
+  '@semantic-release/npm': ^10.0.3
+  '@semantic-release/release-notes-generator': ^11.0.1
   '@types/node': ^20.1.3
   '@vitest/coverage-c8': ^0.31.0
   conventional-changelog-conventionalcommits: ^5.0.0
@@ -10,6 +14,10 @@ specifiers:
   vitest: ^0.31.0
 
 devDependencies:
+  '@semantic-release/commit-analyzer': 9.0.2_semantic-release@21.0.2
+  '@semantic-release/github': 8.0.7_semantic-release@21.0.2
+  '@semantic-release/npm': 10.0.3_rzee2dqr4emcr27bts2behclwa
+  '@semantic-release/release-notes-generator': 11.0.1_semantic-release@21.0.2
   '@types/node': 20.1.3
   '@vitest/coverage-c8': 0.31.0_vitest@0.31.0
   conventional-changelog-conventionalcommits: 5.0.0
