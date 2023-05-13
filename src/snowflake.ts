@@ -66,12 +66,13 @@ const SnowflakeId = ({
     }
 
     lastTimestamp = timestamp;
-    let high =
+
+    const high =
       (BigInt(timestamp - epoch) << BigInt(nodeIdBits + sequenceBits)) |
       (BigInt(nodeId) << BigInt(sequenceBits)) |
       BigInt(sequence);
-    let low = BigInt(0);
-    let snowflakeId = (high << BigInt(32)) | low;
+    const low = BigInt(0);
+    const snowflakeId = (high << BigInt(32)) | low;
     return snowflakeId.toString();
   }
 
