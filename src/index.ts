@@ -1,7 +1,3 @@
-import { add } from "./add";
+import SnowflakeId from './snowflake';
 
-export { add };
-
-export default {
-  add,
-};
+export default SnowflakeId;
