@@ -42,7 +42,6 @@ describe('helpers', () => {
     it('should return a timestamp that is at least 1ms greater than the current timestamp', () => {
       const currentTimestamp = Date.now();
       const nextTimestamp = waitUntilNextTimestamp(currentTimestamp);
-      console.log(nextTimestamp - currentTimestamp);
 
       expect(nextTimestamp - currentTimestamp).toBeGreaterThanOrEqual(1);
     });
