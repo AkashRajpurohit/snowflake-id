@@ -14,8 +14,9 @@
   <a href="https://www.npmjs.com/package/@akashrajpurohit/snowflake-id">
     <img alt="NPM license" src="https://img.shields.io/npm/l/@akashrajpurohit/snowflake-id">
   </a>
+  <img alt="Visitors count" src="https://visitor-badge.laobi.icu/badge?page_id=@akashrajpurohit~snowflake-id.visitor-badge&style=flat-square&color=0088cc">
   <a href="https://twitter.com/akashwhocodes">
-    <img alt="npm license" src="https://img.shields.io/twitter/follow/akashwhocodes.svg?style=social&label=@akashwhocodes">
+    <img alt="follow on twitter" src="https://img.shields.io/twitter/follow/akashwhocodes.svg?style=social&label=@akashwhocodes">
   </a>
 
   <p align="center">
