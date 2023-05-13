@@ -4,7 +4,6 @@ specifiers:
   '@types/node': ^20.1.3
   '@vitest/coverage-c8': ^0.31.0
   conventional-changelog-conventionalcommits: ^5.0.0
-  minifaker: ^1.34.1
   semantic-release: ^21.0.2
   tsup: ^6.7.0
   typescript: ^5.0.4
@@ -14,7 +13,6 @@ devDependencies:
   '@types/node': 20.1.3
   '@vitest/coverage-c8': 0.31.0_vitest@0.31.0
   conventional-changelog-conventionalcommits: 5.0.0
-  minifaker: 1.34.1
   semantic-release: 21.0.2_typescript@5.0.4
   tsup: 6.7.0_typescript@5.0.4
   typescript: 5.0.4
@@ -586,10 +584,6 @@ packages:
 
   /@types/retry/0.12.0:
     resolution: {integrity: sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==}
-    dev: true
-
-  /@types/uuid/8.3.4:
-    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
     dev: true
 
   /@vitest/coverage-c8/0.31.0_vitest@0.31.0:
@@ -2012,14 +2006,6 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /minifaker/1.34.1:
-    resolution: {integrity: sha512-O9+c6GaUETgtKe65bJkpDTJxGcAALiUPqJtDv97dT3o0uP2HmyUVEguEGm6PLKuoSzZUmHqSTZ4cS7m8xKFEAg==}
-    dependencies:
-      '@types/uuid': 8.3.4
-      nanoid: 3.3.6
-      uuid: 8.3.2
-    dev: true
-
   /minimatch/3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -3215,11 +3201,6 @@ packages:
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
-    dev: true
-
-  /uuid/8.3.2:
-    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
-    hasBin: true
     dev: true
 
   /v8-to-istanbul/9.1.0:
