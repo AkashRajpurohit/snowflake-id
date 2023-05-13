@@ -4,17 +4,17 @@ import { DEFAULTS } from '~/helpers';
 import SnowflakeId from '~/snowflake';
 
 describe('snowflake', () => {
-  beforeEach(() => {
-    // tell vitest we use mocked time
-    vi.useFakeTimers();
-  });
-
-  afterEach(() => {
-    // restoring date after each test run
-    vi.useRealTimers();
-  });
-
   describe('Invalid input parameters check', () => {
+    beforeEach(() => {
+      // tell vitest we use mocked time
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      // restoring date after each test run
+      vi.useRealTimers();
+    });
+
     it('should use default workerId if invalid workedId is passed', () => {
       const logSpy = vi.spyOn(global.console, 'warn');
 

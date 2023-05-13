@@ -51,7 +51,7 @@ jobs:
           NODE_ENV: production
 
       - name: Test 🔫
-        run: pnpm coverage
+        run: pnpm test:coverage
 
       - name: Upload Test Results ⏫
         uses: actions/upload-artifact@v3
