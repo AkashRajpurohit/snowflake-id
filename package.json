@@ -1,0 +1,55 @@
+{
+  "name": "@akashrajpurohit/snowflake-id",
+  "version": "0.0.1",
+  "description": "A simple and lightweight Node.js library to generate unique snowflake IDs.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AkashRajpurohit/snowflake-id.git"
+  },
+  "homepage": "https://github.com/AkashRajpurohit/snowflake-id",
+  "bugs": "https://github.com/AkashRajpurohit/snowflake-id/issues",
+  "author": {
+    "name": "AkashRajpurohit",
+    "email": "me@akashrajpurohit.com",
+    "url": "https://akashrajpurohit.com"
+  },
+  "keywords": [
+    "snowflake-id",
+    "uuid-generator"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {}
+  },
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "coverage": "vitest run --coverage",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
+  },
+  "devDependencies": {
+    "@types/node": "^20.1.3",
+    "@vitest/coverage-c8": "^0.31.0",
+    "minifaker": "^1.34.1",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4",
+    "vitest": "^0.31.0"
+  }
+}
