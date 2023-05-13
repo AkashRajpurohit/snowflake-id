@@ -5,7 +5,7 @@ const SnowflakeId = ({
   nodeIdBits = DEFAULTS.NODE_ID_BITS,
   sequenceBits = DEFAULTS.SEQUENCE_BITS,
   epoch = DEFAULTS.EPOCH,
-}) => {
+} = {}) => {
   if (typeof workerId !== 'number' || Number.isNaN(workerId)) {
     console.warn(
       `Invalid worker ID provided: ${workerId}, using default ID: ${DEFAULTS.WORKER_ID}`,
