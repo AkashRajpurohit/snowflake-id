@@ -2,9 +2,9 @@ import { DEFAULTS, getValidNodeId, waitUntilNextTimestamp } from './helpers';
 
 const SnowflakeId = ({
   workerId = DEFAULTS.WORKER_ID,
-  NODE_ID_BITS = DEFAULTS.NODE_ID_BITS,
-  SEQUENCE_BITS = DEFAULTS.SEQUENCE_BITS,
-  EPOCH = DEFAULTS.EPOCH,
+  nodeIdBits = DEFAULTS.NODE_ID_BITS,
+  sequenceBits = DEFAULTS.SEQUENCE_BITS,
+  epoch = DEFAULTS.EPOCH,
 }) => {
   if (typeof workerId !== 'number' || Number.isNaN(workerId)) {
     console.warn(
@@ -14,40 +14,40 @@ const SnowflakeId = ({
   }
 
   if (
-    typeof NODE_ID_BITS !== 'number' ||
-    Number.isNaN(NODE_ID_BITS) ||
-    NODE_ID_BITS < 1 ||
-    NODE_ID_BITS > 31
+    typeof nodeIdBits !== 'number' ||
+    Number.isNaN(nodeIdBits) ||
+    nodeIdBits < 1 ||
+    nodeIdBits > 31
   ) {
     console.warn(
-      `Invalid node ID bits provided: ${NODE_ID_BITS}, using default value: ${DEFAULTS.NODE_ID_BITS}`,
+      `Invalid node ID bits provided: ${nodeIdBits}, using default value: ${DEFAULTS.NODE_ID_BITS}`,
     );
-    NODE_ID_BITS = DEFAULTS.NODE_ID_BITS;
+    nodeIdBits = DEFAULTS.NODE_ID_BITS;
   }
 
   if (
-    typeof SEQUENCE_BITS !== 'number' ||
-    Number.isNaN(SEQUENCE_BITS) ||
-    SEQUENCE_BITS < 1 ||
-    SEQUENCE_BITS > 22
+    typeof sequenceBits !== 'number' ||
+    Number.isNaN(sequenceBits) ||
+    sequenceBits < 1 ||
+    sequenceBits > 22
   ) {
     console.warn(
-      `Invalid sequence bits provided: ${SEQUENCE_BITS}, using default value: ${DEFAULTS.SEQUENCE_BITS}`,
+      `Invalid sequence bits provided: ${sequenceBits}, using default value: ${DEFAULTS.SEQUENCE_BITS}`,
     );
-    SEQUENCE_BITS = DEFAULTS.SEQUENCE_BITS;
+    sequenceBits = DEFAULTS.SEQUENCE_BITS;
   }
 
-  if (typeof EPOCH !== 'number' || Number.isNaN(EPOCH)) {
+  if (typeof epoch !== 'number' || Number.isNaN(epoch)) {
     console.warn(
-      `Invalid epoch provided: ${EPOCH}, using default value: ${DEFAULTS.EPOCH}`,
+      `Invalid epoch provided: ${epoch}, using default value: ${DEFAULTS.EPOCH}`,
     );
-    EPOCH = DEFAULTS.EPOCH;
+    epoch = DEFAULTS.EPOCH;
   }
 
   let lastTimestamp = -1;
   let sequence = 0;
-  let nodeId = getValidNodeId(workerId, NODE_ID_BITS);
-  const maxSequence = (1 << SEQUENCE_BITS) - 1;
+  let nodeId = getValidNodeId(workerId, nodeIdBits);
+  const maxSequence = (1 << sequenceBits) - 1;
 
   function generate() {
     let timestamp = Date.now();
@@ -67,8 +67,8 @@ const SnowflakeId = ({
 
     lastTimestamp = timestamp;
     let high =
-      (BigInt(timestamp - EPOCH) << BigInt(NODE_ID_BITS + SEQUENCE_BITS)) |
-      (BigInt(nodeId) << BigInt(SEQUENCE_BITS)) |
+      (BigInt(timestamp - epoch) << BigInt(nodeIdBits + sequenceBits)) |
+      (BigInt(nodeId) << BigInt(sequenceBits)) |
       BigInt(sequence);
     let low = BigInt(0);
     let snowflakeId = (high << BigInt(32)) | low;

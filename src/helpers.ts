@@ -6,8 +6,8 @@ export const waitUntilNextTimestamp = (currentTimestamp: number) => {
   return nextTimestamp;
 };
 
-export const getValidNodeId = (newNodeId: number, NODE_ID_BITS: number) => {
-  const maxNodeId = 1 << NODE_ID_BITS;
+export const getValidNodeId = (newNodeId: number, nodeIdBits: number) => {
+  const maxNodeId = 1 << nodeIdBits;
   let nodeId;
 
   if (typeof newNodeId !== 'number' || Number.isNaN(newNodeId)) {

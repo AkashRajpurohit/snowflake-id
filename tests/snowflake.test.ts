@@ -28,12 +28,12 @@ describe('snowflake', () => {
       );
     });
 
-    it('should use default NODE_ID_BITS if invalid NODE_ID_BITS is passed', () => {
+    it('should use default NODE_ID_BITS if invalid nodeIdBits is passed', () => {
       const logSpy = vi.spyOn(global.console, 'warn');
 
       SnowflakeId({
         workerId: 121,
-        NODE_ID_BITS: NaN,
+        nodeIdBits: NaN,
       });
 
       expect(logSpy).toHaveBeenCalled();
@@ -42,12 +42,12 @@ describe('snowflake', () => {
       );
     });
 
-    it('should use default NODE_ID_BITS if NODE_ID_BITS provided is not in the range', () => {
+    it('should use default NODE_ID_BITS if nodeIdBits provided is not in the range', () => {
       const logSpy = vi.spyOn(global.console, 'warn');
 
       SnowflakeId({
         workerId: 121,
-        NODE_ID_BITS: 35,
+        nodeIdBits: 35,
       });
 
       expect(logSpy).toHaveBeenCalled();
@@ -56,12 +56,12 @@ describe('snowflake', () => {
       );
     });
 
-    it('should use default SEQUENCE_BITS if invalid SEQUENCE_BITS is passed', () => {
+    it('should use default SEQUENCE_BITS if invalid sequenceBits is passed', () => {
       const logSpy = vi.spyOn(global.console, 'warn');
 
       SnowflakeId({
         workerId: 121,
-        SEQUENCE_BITS: NaN,
+        sequenceBits: NaN,
       });
 
       expect(logSpy).toHaveBeenCalled();
@@ -70,12 +70,12 @@ describe('snowflake', () => {
       );
     });
 
-    it('should use default NODE_ID_BITS if NODE_ID_BITS provided is not in the range', () => {
+    it('should use default SEQUENCE_BITS if sequenceBits provided is not in the range', () => {
       const logSpy = vi.spyOn(global.console, 'warn');
 
       SnowflakeId({
         workerId: 121,
-        SEQUENCE_BITS: 35,
+        sequenceBits: 35,
       });
 
       expect(logSpy).toHaveBeenCalled();
@@ -84,12 +84,12 @@ describe('snowflake', () => {
       );
     });
 
-    it('should use default EPOCH if invalid EPOCH is passed', () => {
+    it('should use default EPOCH if invalid epoch is passed', () => {
       const logSpy = vi.spyOn(global.console, 'warn');
 
       SnowflakeId({
         workerId: 121,
-        EPOCH: NaN,
+        epoch: NaN,
       });
 
       expect(logSpy).toHaveBeenCalled();
