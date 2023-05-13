@@ -10,8 +10,9 @@ export default defineConfig({
     },
   },
   test: {
-    deps: {
-      inline: ["minifaker"],
+    coverage: {
+      provider: 'c8',
+      reporter: ['text', 'json', 'json-summary', 'html'],
     },
   },
 });
