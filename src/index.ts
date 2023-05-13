@@ -1,3 +1,7 @@
-import SnowflakeId from './snowflake';
+import SnowflakeId from "./snowflake";
 
-export default SnowflakeId;
+export { SnowflakeId };
+
+export default {
+  SnowflakeId,
+};
