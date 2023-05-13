@@ -1,12 +1,13 @@
-name: Publish
+name: Pull Request
 
-on:
-  release:
-    types:
-      - published
+on: [pull_request]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  publish:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🧳
@@ -49,7 +50,8 @@ jobs:
       - name: Test 🔫
         run: pnpm coverage
 
-      - name: Publish
-        uses: JS-DevTools/npm-publish@v1
+      - name: Upload Test Results ⏫
+        uses: actions/upload-artifact@v3
         with:
-          token: ${{ secrets.NPM_TOKEN }}
+          name: coverage
+          path: coverage/
