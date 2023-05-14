@@ -58,19 +58,12 @@ jobs:
         run: |
           COVERAGE="$(cat coverage/coverage-summary.json | jq -r '.total.lines.pct')"
           echo "COVERAGE=$(echo ${COVERAGE})" >> $GITHUB_ENV
-
-          REF=${{ github.ref }}
-          echo "github.ref: $REF"
-          IFS='/' read -ra PATHS <<< "$REF"
-          BRANCH_NAME="${PATHS[1]}_${PATHS[2]}"
-          echo $BRANCH_NAME
-          echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
       - name: Create coverage badge 
         uses: schneegans/dynamic-badges-action@v1.6.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: 7336f237b82d9581c5f52405f87db531
-          filename: snowflake-id__${{ env.BRANCH }}.json
+          filename: snowflake-id-coverage.json
           label: Code Coverage
           message: ${{ env.COVERAGE }}
           color: green
