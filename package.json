@@ -90,6 +90,10 @@
                 "section": "Bug Fixes"
               },
               {
+                "type": "docs",
+                "section": "Documentation Changes"
+              },
+              {
                 "type": "build",
                 "section": "Dependencies and Other Build Updates",
                 "hidden": false
