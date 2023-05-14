@@ -9,6 +9,8 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: Checkout 🧳
         uses: actions/checkout@v3
@@ -49,6 +51,20 @@ jobs:
 
       - name: Test 🔫
         run: pnpm test:coverage
+
+      - name: Report Coverage 📝
+        if: always() # Also generate the report if tests are failing
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        with:
+          filename: coverage/coverage-final.json
+          badge: true
+          fail_below_min: true
+          format: markdown
+          hide_branch_rate: false
+          hide_complexity: true
+          indicators: true
+          output: both
+          thresholds: '60 80'
 
       - name: Upload Test Results ⏫
         uses: actions/upload-artifact@v3
