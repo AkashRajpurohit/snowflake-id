@@ -2,8 +2,8 @@
 <h3 align="center">A simple and lightweight Node.js library to generate unique snowflake IDs.</h3>
 <br />
 <p align="center">
-  <a href="https://github.com/AkashRajpurohit/snowflake-id/actions/workflows/release.yml">
-    <img alt="Build states" src="https://github.com/AkashRajpurohit/snowflake-id/actions/workflows/release.yml/badge.svg?branch=main">
+  <a href="https://github.com/AkashRajpurohit/snowflake-id/actions/workflows/test-and-release.yml">
+    <img alt="Build states" src="https://github.com/AkashRajpurohit/snowflake-id/actions/workflows/test-and-release.yml/badge.svg?branch=main">
   </a>
   <a href="https://www.npmjs.com/package/@akashrajpurohit/snowflake-id">
     <img alt="npm latest version" src="https://img.shields.io/npm/v/@akashrajpurohit/snowflake-id/latest.svg">
@@ -11,13 +11,13 @@
   <a href="https://www.npmjs.com/package/@akashrajpurohit/snowflake-id">
     <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/@akashrajpurohit/snowflake-id">
   </a>
+  <img alt="Visitors count" src="https://visitor-badge.laobi.icu/badge?page_id=@akashrajpurohit~snowflake-id.visitor-badge&style=flat-square&color=0088cc">
   <a href="https://github.com/AkashRajpurohit/snowflake-id/actions">
-    <img alt="Coverage" src="https://img.shields.io/endpoint?url=https://gist.github.com/AkashRajpurohit/7336f237b82d9581c5f52405f87db531/raw/snowflake-id-coverage.json">
+    <img alt="Coverage" src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/AkashRajpurohit/7336f237b82d9581c5f52405f87db531/raw/snowflake-id-coverage.json">
   </a>
   <a href="https://www.npmjs.com/package/@akashrajpurohit/snowflake-id">
     <img alt="NPM license" src="https://img.shields.io/npm/l/@akashrajpurohit/snowflake-id">
   </a>
-  <img alt="Visitors count" src="https://visitor-badge.laobi.icu/badge?page_id=@akashrajpurohit~snowflake-id.visitor-badge&style=flat-square&color=0088cc">
   <a href="https://twitter.com/akashwhocodes">
     <img alt="follow on twitter" src="https://img.shields.io/twitter/follow/akashwhocodes.svg?style=social&label=@akashwhocodes">
   </a>
