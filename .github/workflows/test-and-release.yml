@@ -1,16 +1,13 @@
-name: Release
+name: Pull Request
 
-on:
-  push:
-    branches:
-      - main
+on: [push, workflow_dispatch]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  release:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🧳
@@ -53,14 +50,40 @@ jobs:
       - name: Test 🔫
         run: pnpm test:coverage
 
+      - name: Report Coverage 📝
+        if: always() # Also generate the report if tests are failing
+        uses: davelosert/vitest-coverage-report-action@v1
+
+      - name: Get Coverage for badge 🔢
+        run: |
+          COVERAGE="$(cat coverage/coverage-summary.json | jq -r '.total.lines.pct')"
+          echo "COVERAGE=$(echo ${COVERAGE})" >> $GITHUB_ENV
+
+      - name: Create coverage badge ✍🏽
+        uses: schneegans/dynamic-badges-action@v1.6.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 7336f237b82d9581c5f52405f87db531
+          filename: snowflake-id-coverage.json
+          label: Code Coverage
+          message: ${{ env.COVERAGE }}
+          color: green
+          namedLogo: vitest
+
       - name: Upload Test Results ⏫
         uses: actions/upload-artifact@v3
         with:
           name: coverage
           path: coverage/
 
+  release:
+    # Release only when code is pushed to main branch
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
       - name: Release 🚀
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: pnpm semantic-release
