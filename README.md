@@ -128,13 +128,42 @@ console.log(worker1.generate()); // Generates an ID with worker ID 1
 console.log(worker2.generate()); // Generates an ID with worker ID 2
 ```
 
+While using it in distributed systems, it is highly recommended that you set a unique `workerId` to reduce collisions of IDS.
+
+While the implementation detail depends on you, one simple way to set a possible unique `workerId` is to use `process.pid`.
+
+```javascript
+const { SnowflakeId } = require('@akashrajpurohit/snowflake-id');
+
+const workerId = process.pid % 1024; // Using PID as workerId
+const snowflake = SnowflakeId({ workerId });
+
+const id = snowflake.generate(); // Generate a new Snowflake ID
+console.log(id);
+```
+
+## Notes 📝
+
+- It is recommended to use a higher `nodeIdBits` or `sequenceBits` value if you expect to generate IDs on multiple machines, as this reduces the chance of ID collisions.
+
+- The `workerId` parameter can be omitted, in which case the `workerId` would be set to 0. However, if you expect to generate IDs on multiple machines, it is recommended to set a specific workerId value to reduce the chance of ID collisions.
+
+- The epoch timestamp should be set as close to the current time as possible to maximize the lifespan of the generator. If the epoch is set too far in the past or future, the generator may not be able to generate IDs for the full lifespan of the generator.
+  <details>
+    <summary>Learn more</summary>
+    <p>The epoch timestamp is used as the starting point for generating unique IDs. If the epoch timestamp is set too far in the past or future, it can limit the lifespan of the generator. This is because the timestamp portion of a generated ID is typically a smaller number of bits compared to the total number of bits in the ID, and as a result, the maximum value for the timestamp portion can be reached more quickly than the other portions.</p>
+    <p>For example, if the epoch timestamp is set to January 1, 1970, which is the Unix epoch, and the generator is configured to use 41 bits for the timestamp portion, the maximum value for the timestamp portion would be reached in the year 2088. This means that after 2088, the generator would no longer be able to generate unique IDs.</p>
+    <p>Therefore, it's important to set the epoch timestamp as close to the current time as possible to maximize the lifespan of the generator. This will ensure that the timestamp portion of the generated IDs will not reach their maximum value too quickly, allowing the generator to continue generating unique IDs for a longer period of time.</p>
+  </details>
+
 ## Bugs or Requests 🐛
 
 If you encounter any problems feel free to open an [issue](https://github.com/AkashRajpurohit/snowflake-id/issues/new?template=bug_report.md). If you feel the project is missing a feature, please raise a [ticket](https://github.com/AkashRajpurohit/snowflake-id/issues/new?template=feature_request.md) on GitHub and I'll look into it. Pull requests are also welcome.
 
 ## Where to find me? 👀
 
-- [Website](https://akashrajpurohit.com/)
-- [Linkedin](https://www.linkedin.com/in/AkashRajpurohit)
-- [Instagram](https://www.instagram.com/akashwho.codes)
-- [Twitter](https://www.twitter.com/akashwhocodes)
+[![Website Badge](https://img.shields.io/badge/-akashrajpurohit.com-3b5998?logo=google-chrome&logoColor=white)](https://akashrajpurohit.com/)
+[![Twitter Badge](https://img.shields.io/badge/-@akashwhocodes-00acee?logo=Twitter&logoColor=white)](https://twitter.com/AkashWhoCodes)
+[![Linkedin Badge](https://img.shields.io/badge/-@AkashRajpurohit-0e76a8?logo=Linkedin&logoColor=white)](https://linkedin.com/in/AkashRajpurohit)
+[![Instagram Badge](https://img.shields.io/badge/-@akashwho.codes-e4405f?logo=Instagram&logoColor=white)](https://instagram.com/akashwho.codes/)
+[![Telegram Badge](https://img.shields.io/badge/-@AkashRajpurohit-0088cc?logo=Telegram&logoColor=white)](https://t.me/AkashRajpurohit)
