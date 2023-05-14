@@ -9,8 +9,6 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
     steps:
       - name: Checkout 🧳
         uses: actions/checkout@v3
@@ -54,7 +52,31 @@ jobs:
 
       - name: Report Coverage 📝
         if: always() # Also generate the report if tests are failing
-        uses:  davelosert/vitest-coverage-report-action@v1
+        uses: davelosert/vitest-coverage-report-action@v1
+
+      - name: Get coverage percentage
+        id: coverage
+        if: ${{ always() }}
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const coverage=$(node -p "require('./coverage/coverage-summary.json').total.lines.pct")
+            const badge_url=`https://img.shields.io/badge/Coverage-${coverage}%25-green.svg`
+            core.setOutput("badge_url", badge_url);
+
+      - name: Update README file
+        run: |
+          sed -i "s#\[![Coverage Badge\].*?\](.*?)#\[![Coverage Badge\]($badge_url)\](\\1)#g" README.md
+        shell: bash
+
+      - name: Commit and Push 🚀
+        uses: stefanzweifel/git-auto-commit-action@v4.16.0
+        with:
+          commit_message: 'docs(README): :memo: Added coverage badge for README [skip ci]'
+          commit_user_name: FollowingAkash
+          commit_user_email: bot@akashrajpurohit.com
+          commit_author: FollowingAkash <bot@akashrajpurohit.com>
 
       - name: Upload Test Results ⏫
         uses: actions/upload-artifact@v3

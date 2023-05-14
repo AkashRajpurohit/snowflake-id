@@ -11,6 +11,7 @@
   <a href="https://www.npmjs.com/package/@akashrajpurohit/snowflake-id">
     <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/@akashrajpurohit/snowflake-id">
   </a>
+  [![Coverage Badge]({{COVERAGE_BADGE_URL}})]({{COVERAGE_REPORT_URL}})
   <a href="https://www.npmjs.com/package/@akashrajpurohit/snowflake-id">
     <img alt="NPM license" src="https://img.shields.io/npm/l/@akashrajpurohit/snowflake-id">
   </a>

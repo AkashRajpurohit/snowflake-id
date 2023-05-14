@@ -58,6 +58,16 @@ jobs:
         with:
           name: coverage
           path: coverage/
+      
+      - name: Report Coverage 📝
+        if: always() # Also generate the report if tests are failing
+        uses:  davelosert/vitest-coverage-report-action@v1
+
+      - name: Get coverage percentage
+        id: coverage
+        run: |
+          coverage=$(node -p "require('./coverage/coverage-summary.json').total.lines.pct")
+          echo "Coverage: $coverage"
 
       - name: Release 🚀
         env:
