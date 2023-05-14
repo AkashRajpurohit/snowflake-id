@@ -1,6 +1,6 @@
 name: Pull Request
 
-on: [push]
+on: [push, workflow_dispatch]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -58,7 +58,8 @@ jobs:
         run: |
           COVERAGE="$(cat coverage/coverage-summary.json | jq -r '.total.lines.pct')"
           echo "COVERAGE=$(echo ${COVERAGE})" >> $GITHUB_ENV
-      - name: Create coverage badge 
+
+      - name: Create coverage badge ✍🏽
         uses: schneegans/dynamic-badges-action@v1.6.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
