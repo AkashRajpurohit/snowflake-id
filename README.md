@@ -112,7 +112,7 @@ If this happens, the library throws an Error with the message `Clock is moving b
 Here's an example of how to generate 10 IDs:
 
 ```javascript
-const { SnowflakeId } = require('@akashrajpurohit/snowflake-id');
+import { SnowflakeId } from '@akashrajpurohit/snowflake-id';
 
 const snowflake = SnowflakeId();
 
@@ -124,7 +124,7 @@ for (let i = 0; i < 10; i++) {
 And here's an example of how to generate IDs using different worker IDs:
 
 ```javascript
-const { SnowflakeId } = require('@akashrajpurohit/snowflake-id');
+import { SnowflakeId } from '@akashrajpurohit/snowflake-id';
 
 const worker1 = SnowflakeId({ workerId: 1 });
 const worker2 = SnowflakeId({ workerId: 2 });
@@ -138,7 +138,7 @@ While using it in distributed systems, it is highly recommended that you set a u
 While the implementation detail depends on you, one simple way to set a possible unique `workerId` is to use `process.pid`.
 
 ```javascript
-const { SnowflakeId } = require('@akashrajpurohit/snowflake-id');
+import { SnowflakeId } from '@akashrajpurohit/snowflake-id';
 
 const workerId = process.pid % 1024; // Using PID as workerId
 const snowflake = SnowflakeId({ workerId });
