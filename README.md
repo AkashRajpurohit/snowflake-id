@@ -32,6 +32,8 @@
 
 It generates 64-bit IDs (in string format) that are composed of a timestamp, a worker ID, and a sequence number. These IDs are based on [Twitter's Snowflake ID](https://github.com/twitter-archive/snowflake/tree/snowflake-2010) generation algorithm.
 
+> Read in detail about [what are Snowflake IDs](https://akashrajpurohit.com/blog/snowflake-id-generating-unique-ids-for-distributed-systems/?ref=github-desc)
+
 ## Installation 🚀
 
 You can install `@akashrajpurohit/snowflake-id` using pnpm/npm/yarn:
