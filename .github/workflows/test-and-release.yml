@@ -1,16 +1,13 @@
-name: Release
+name: Pull Request
 
-on:
-  push:
-    branches:
-      - main
+on: [pull_request, push]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  release:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🧳
@@ -53,22 +50,22 @@ jobs:
       - name: Test 🔫
         run: pnpm test:coverage
 
+      - name: Report Coverage 📝
+        if: always() # Also generate the report if tests are failing
+        uses: davelosert/vitest-coverage-report-action@v1
+
       - name: Upload Test Results ⏫
         uses: actions/upload-artifact@v3
         with:
           name: coverage
           path: coverage/
-      
-      - name: Report Coverage 📝
-        if: always() # Also generate the report if tests are failing
-        uses:  davelosert/vitest-coverage-report-action@v1
 
-      - name: Get coverage percentage
-        id: coverage
-        run: |
-          coverage=$(node -p "require('./coverage/coverage-summary.json').total.lines.pct")
-          echo "Coverage: $coverage"
-
+  release:
+    # Release only when code is pushed to main branch
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
       - name: Release 🚀
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
