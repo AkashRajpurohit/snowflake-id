@@ -1,4 +1,4 @@
-import SnowflakeId from "./snowflake";
+import SnowflakeId from './snowflake';
 
 export { SnowflakeId };
 

@@ -7,40 +7,22 @@ const SnowflakeId = ({
   epoch = DEFAULTS.EPOCH,
 } = {}) => {
   if (typeof workerId !== 'number' || Number.isNaN(workerId)) {
-    console.warn(
-      `Invalid worker ID provided: ${workerId}, using default ID: ${DEFAULTS.WORKER_ID}`,
-    );
+    console.warn(`Invalid worker ID provided: ${workerId}, using default ID: ${DEFAULTS.WORKER_ID}`);
     workerId = DEFAULTS.WORKER_ID;
   }
 
-  if (
-    typeof nodeIdBits !== 'number' ||
-    Number.isNaN(nodeIdBits) ||
-    nodeIdBits < 1 ||
-    nodeIdBits > 31
-  ) {
-    console.warn(
-      `Invalid node ID bits provided: ${nodeIdBits}, using default value: ${DEFAULTS.NODE_ID_BITS}`,
-    );
+  if (typeof nodeIdBits !== 'number' || Number.isNaN(nodeIdBits) || nodeIdBits < 1 || nodeIdBits > 31) {
+    console.warn(`Invalid node ID bits provided: ${nodeIdBits}, using default value: ${DEFAULTS.NODE_ID_BITS}`);
     nodeIdBits = DEFAULTS.NODE_ID_BITS;
   }
 
-  if (
-    typeof sequenceBits !== 'number' ||
-    Number.isNaN(sequenceBits) ||
-    sequenceBits < 1 ||
-    sequenceBits > 22
-  ) {
-    console.warn(
-      `Invalid sequence bits provided: ${sequenceBits}, using default value: ${DEFAULTS.SEQUENCE_BITS}`,
-    );
+  if (typeof sequenceBits !== 'number' || Number.isNaN(sequenceBits) || sequenceBits < 1 || sequenceBits > 22) {
+    console.warn(`Invalid sequence bits provided: ${sequenceBits}, using default value: ${DEFAULTS.SEQUENCE_BITS}`);
     sequenceBits = DEFAULTS.SEQUENCE_BITS;
   }
 
   if (typeof epoch !== 'number' || Number.isNaN(epoch)) {
-    console.warn(
-      `Invalid epoch provided: ${epoch}, using default value: ${DEFAULTS.EPOCH}`,
-    );
+    console.warn(`Invalid epoch provided: ${epoch}, using default value: ${DEFAULTS.EPOCH}`);
     epoch = DEFAULTS.EPOCH;
   }
 

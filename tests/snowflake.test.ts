@@ -23,9 +23,7 @@ describe('snowflake', () => {
       });
 
       expect(logSpy).toHaveBeenCalled();
-      expect(logSpy).toBeCalledWith(
-        `Invalid worker ID provided: NaN, using default ID: ${DEFAULTS.WORKER_ID}`,
-      );
+      expect(logSpy).toBeCalledWith(`Invalid worker ID provided: NaN, using default ID: ${DEFAULTS.WORKER_ID}`);
     });
 
     it('should use default NODE_ID_BITS if invalid nodeIdBits is passed', () => {
@@ -38,7 +36,7 @@ describe('snowflake', () => {
 
       expect(logSpy).toHaveBeenCalled();
       expect(logSpy).toBeCalledWith(
-        `Invalid node ID bits provided: NaN, using default value: ${DEFAULTS.NODE_ID_BITS}`,
+        `Invalid node ID bits provided: NaN, using default value: ${DEFAULTS.NODE_ID_BITS}`
       );
     });
 
@@ -51,9 +49,7 @@ describe('snowflake', () => {
       });
 
       expect(logSpy).toHaveBeenCalled();
-      expect(logSpy).toBeCalledWith(
-        `Invalid node ID bits provided: 35, using default value: ${DEFAULTS.NODE_ID_BITS}`,
-      );
+      expect(logSpy).toBeCalledWith(`Invalid node ID bits provided: 35, using default value: ${DEFAULTS.NODE_ID_BITS}`);
     });
 
     it('should use default SEQUENCE_BITS if invalid sequenceBits is passed', () => {
@@ -66,7 +62,7 @@ describe('snowflake', () => {
 
       expect(logSpy).toHaveBeenCalled();
       expect(logSpy).toBeCalledWith(
-        `Invalid sequence bits provided: NaN, using default value: ${DEFAULTS.SEQUENCE_BITS}`,
+        `Invalid sequence bits provided: NaN, using default value: ${DEFAULTS.SEQUENCE_BITS}`
       );
     });
 
@@ -80,7 +76,7 @@ describe('snowflake', () => {
 
       expect(logSpy).toHaveBeenCalled();
       expect(logSpy).toBeCalledWith(
-        `Invalid sequence bits provided: 35, using default value: ${DEFAULTS.SEQUENCE_BITS}`,
+        `Invalid sequence bits provided: 35, using default value: ${DEFAULTS.SEQUENCE_BITS}`
       );
     });
 
@@ -93,9 +89,7 @@ describe('snowflake', () => {
       });
 
       expect(logSpy).toHaveBeenCalled();
-      expect(logSpy).toBeCalledWith(
-        `Invalid epoch provided: NaN, using default value: ${DEFAULTS.EPOCH}`,
-      );
+      expect(logSpy).toBeCalledWith(`Invalid epoch provided: NaN, using default value: ${DEFAULTS.EPOCH}`);
     });
 
     it('should throw error if currentTimeStamp is less than lastTimeStamp', () => {

@@ -78,20 +78,19 @@ The SnowflakeId constructor takes an options object with the following propertie
 
 - `workerId` (optional): A number between 0 and (2^`nodeIdBits`)-1 that represents the ID of the worker generating the IDs.
 
-	Defaults to 0 if not specified.
+  Defaults to 0 if not specified.
 
 - `nodeIdBits` (optional): The number of bits used to represent the worker ID.
 
-	Defaults to 10 if not specified.
+  Defaults to 10 if not specified.
 
 - `sequenceBits` (optional): The number of bits used to represent the sequence number.
 
-	Defaults to 12 if not specified.
+  Defaults to 12 if not specified.
 
 - `epoch` (optional): A timestamp in milliseconds representing the start of the ID generation.
 
-	Defaults to January 1, 1970 at 00:00:00 UTC if not specified.
-  
+  Defaults to January 1, 1970 at 00:00:00 UTC if not specified.
 
 ## Methods 🧮
 
