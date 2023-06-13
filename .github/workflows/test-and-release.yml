@@ -52,7 +52,7 @@ jobs:
 
       - name: Report Coverage 📝
         if: always() # Also generate the report if tests are failing
-        uses: davelosert/vitest-coverage-report-action@v1
+        uses: davelosert/vitest-coverage-report-action@v2
 
       - name: Get Coverage for badge 🔢
         run: |
