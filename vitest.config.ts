@@ -11,7 +11,7 @@ export default defineConfig({
   },
   test: {
     coverage: {
-      provider: 'c8',
+      provider: 'v8',
       reporter: ['text', 'json', 'json-summary', 'html'],
       lines: 80,
       branches: 80,
