@@ -64,7 +64,7 @@ const snowflake = SnowflakeId({
   workerId: 1,
   nodeIdBits: 10,
   sequenceBits: 12,
-  epoch: 1683982358000,
+  epoch: 1597017600000,
 });
 
 console.log(snowflake.generate()); // 14755887168818983731200
@@ -90,7 +90,7 @@ The SnowflakeId constructor takes an options object with the following propertie
 
 - `epoch` (optional): A timestamp in milliseconds representing the start of the ID generation.
 
-  Defaults to January 1, 1970 at 00:00:00 UTC if not specified.
+  Defaults to August 10, 2020 at 00:00:00 UTC if not specified.
 
 ## Methods 🧮
 
