@@ -58,7 +58,7 @@ yarn add @akashrajpurohit/snowflake-id
 Here's an example of how to use `@akashrajpurohit/snowflake-id`:
 
 ```javascript
-const { SnowflakeId } = require('@akashrajpurohit/snowflake-id');
+import { SnowflakeId } from '@akashrajpurohit/snowflake-id';
 
 const snowflake = SnowflakeId({
   workerId: 1,
