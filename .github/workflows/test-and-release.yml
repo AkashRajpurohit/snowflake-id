@@ -60,7 +60,7 @@ jobs:
           echo "COVERAGE=$(echo ${COVERAGE})" >> $GITHUB_ENV
 
       - name: Create coverage badge ✍🏽
-        uses: schneegans/dynamic-badges-action@v1.6.0
+        uses: schneegans/dynamic-badges-action@v1.7.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: 7336f237b82d9581c5f52405f87db531
