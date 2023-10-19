@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🧳
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Node.js 🔥
         uses: actions/setup-node@v3
@@ -83,7 +83,7 @@ jobs:
     needs: [test]
     steps:
       - name: Checkout 🧳
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Node.js 🔥
         uses: actions/setup-node@v3
