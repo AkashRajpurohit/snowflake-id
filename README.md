@@ -62,8 +62,6 @@ import { SnowflakeId } from '@akashrajpurohit/snowflake-id';
 
 const snowflake = SnowflakeId({
   workerId: 1,
-  nodeIdBits: 10,
-  sequenceBits: 12,
   epoch: 1597017600000,
 });
 
@@ -76,17 +74,9 @@ This will generate a unique ID in string format.
 
 The SnowflakeId constructor takes an options object with the following properties:
 
-- `workerId` (optional): A number between 0 and (2^`nodeIdBits`)-1 that represents the ID of the worker generating the IDs.
+- `workerId` (optional): A ID of the worker generating the Snowflake IDs.
 
   Defaults to 0 if not specified.
-
-- `nodeIdBits` (optional): The number of bits used to represent the worker ID.
-
-  Defaults to 10 if not specified.
-
-- `sequenceBits` (optional): The number of bits used to represent the sequence number.
-
-  Defaults to 12 if not specified.
 
 - `epoch` (optional): A timestamp in milliseconds representing the start of the ID generation.
 
@@ -100,11 +90,11 @@ The SnowflakeId instance has the following methods:
 
 ## Error Handling 😱
 
-The SnowflakeId instance throws an error if the clock moves backwards, i.e., if the current timestamp is less than the last timestamp.
+There are two errors that can be thrown by the SnowflakeId instance:
 
-This can happen if the system clock is adjusted manually or if the system clock drifts significantly.
+- `Invalid Epoch Error`: The SnowflakeId instance throws an error if the epoch timestamp is invalid, i.e., if the epoch timestamp is greater than the current timestamp.
 
-If this happens, the library throws an Error with the message `Clock is moving backwards!`.
+- `Clock Backwards Error`: The SnowflakeId instance throws an error if the clock moves backwards, i.e., if the current timestamp is less than the last timestamp.
 
 ## Examples 🔠
 
@@ -147,8 +137,6 @@ console.log(id);
 ```
 
 ## Notes 📝
-
-- It is recommended to use a higher `nodeIdBits` or `sequenceBits` value if you expect to generate IDs on multiple machines, as this reduces the chance of ID collisions.
 
 - The `workerId` parameter can be omitted, in which case the `workerId` would be set to 0. However, if you expect to generate IDs on multiple machines, it is recommended to set a specific workerId value to reduce the chance of ID collisions.
 
