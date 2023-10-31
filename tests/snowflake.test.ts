@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 import SnowflakeId from '~/snowflake';
 
-describe.only('snowflake', () => {
+describe('snowflake', () => {
   describe('Invalid input parameters check', () => {
     beforeEach(() => {
       // tell vitest we use mocked time
