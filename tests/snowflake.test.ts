@@ -1,9 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { DEFAULTS } from '~/helpers';
 
 import SnowflakeId from '~/snowflake';
 
-describe('snowflake', () => {
+describe.only('snowflake', () => {
   describe('Invalid input parameters check', () => {
     beforeEach(() => {
       // tell vitest we use mocked time
@@ -15,81 +14,21 @@ describe('snowflake', () => {
       vi.useRealTimers();
     });
 
-    it('should use default workerId if invalid workedId is passed', () => {
-      const logSpy = vi.spyOn(global.console, 'warn');
+    it('should throw error if epoch is greater than current timestamp', () => {
+      let error: Error | null = null;
+      try {
+        SnowflakeId({
+          workerId: 121,
+          epoch: Date.now() + 10000,
+        });
+      } catch (err) {
+        error = err as Error;
+      }
 
-      SnowflakeId({
-        workerId: NaN,
-      });
-
-      expect(logSpy).toHaveBeenCalled();
-      expect(logSpy).toBeCalledWith(`Invalid worker ID provided: NaN, using default ID: ${DEFAULTS.WORKER_ID}`);
-    });
-
-    it('should use default NODE_ID_BITS if invalid nodeIdBits is passed', () => {
-      const logSpy = vi.spyOn(global.console, 'warn');
-
-      SnowflakeId({
-        workerId: 121,
-        nodeIdBits: NaN,
-      });
-
-      expect(logSpy).toHaveBeenCalled();
-      expect(logSpy).toBeCalledWith(
-        `Invalid node ID bits provided: NaN, using default value: ${DEFAULTS.NODE_ID_BITS}`
+      expect(error).toBeInstanceOf(Error);
+      expect(error?.message).toEqual(
+        `Invalid epoch: ${Date.now() + 10000}, it can't be greater than the current timestamp!`
       );
-    });
-
-    it('should use default NODE_ID_BITS if nodeIdBits provided is not in the range', () => {
-      const logSpy = vi.spyOn(global.console, 'warn');
-
-      SnowflakeId({
-        workerId: 121,
-        nodeIdBits: 35,
-      });
-
-      expect(logSpy).toHaveBeenCalled();
-      expect(logSpy).toBeCalledWith(`Invalid node ID bits provided: 35, using default value: ${DEFAULTS.NODE_ID_BITS}`);
-    });
-
-    it('should use default SEQUENCE_BITS if invalid sequenceBits is passed', () => {
-      const logSpy = vi.spyOn(global.console, 'warn');
-
-      SnowflakeId({
-        workerId: 121,
-        sequenceBits: NaN,
-      });
-
-      expect(logSpy).toHaveBeenCalled();
-      expect(logSpy).toBeCalledWith(
-        `Invalid sequence bits provided: NaN, using default value: ${DEFAULTS.SEQUENCE_BITS}`
-      );
-    });
-
-    it('should use default SEQUENCE_BITS if sequenceBits provided is not in the range', () => {
-      const logSpy = vi.spyOn(global.console, 'warn');
-
-      SnowflakeId({
-        workerId: 121,
-        sequenceBits: 35,
-      });
-
-      expect(logSpy).toHaveBeenCalled();
-      expect(logSpy).toBeCalledWith(
-        `Invalid sequence bits provided: 35, using default value: ${DEFAULTS.SEQUENCE_BITS}`
-      );
-    });
-
-    it('should use default EPOCH if invalid epoch is passed', () => {
-      const logSpy = vi.spyOn(global.console, 'warn');
-
-      SnowflakeId({
-        workerId: 121,
-        epoch: NaN,
-      });
-
-      expect(logSpy).toHaveBeenCalled();
-      expect(logSpy).toBeCalledWith(`Invalid epoch provided: NaN, using default value: ${DEFAULTS.EPOCH}`);
     });
 
     it('should throw error if currentTimeStamp is less than lastTimeStamp', () => {
@@ -120,10 +59,15 @@ describe('snowflake', () => {
       workerId: 121,
     });
 
-    it('should generate a new id', () => {
+    it('should generate a new valid snowflake id', () => {
       const id = snowflakeId.generate();
 
       expect(id).toBeTypeOf('string');
+
+      // Generated id should be at max 64 bits
+      // We can padStart with 0 for the binary representation
+      const idBinary = BigInt(id).toString(2);
+      expect(idBinary.length).toBeLessThanOrEqual(64);
     });
 
     it('should not generate same id ever', () => {
