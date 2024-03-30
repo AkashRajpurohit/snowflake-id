@@ -13,34 +13,14 @@ jobs:
       - name: Checkout 🧳
         uses: actions/checkout@v4
 
-      - name: Install Node.js 🔥
-        uses: actions/setup-node@v4
+      - name: Setup PNPM ⚙️
+        uses: AkashRajpurohit/.github/.github/actions/setup-pnpm@main
         with:
-          node-version: 18
-
-      - name: Install pnpm 👀
-        uses: pnpm/action-setup@v2
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
-
-      - name: Get pnpm store directory 🏪
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - name: Setup pnpm cache 💰
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node_version: 18
+          pnpm_version: 8
 
       - name: Install dependencies ⏬
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build ⏰
         run: pnpm build
@@ -85,34 +65,14 @@ jobs:
       - name: Checkout 🧳
         uses: actions/checkout@v4
 
-      - name: Install Node.js 🔥
-        uses: actions/setup-node@v4
+      - name: Setup PNPM ⚙️
+        uses: AkashRajpurohit/.github/.github/actions/setup-pnpm@main
         with:
-          node-version: 18
-
-      - name: Install pnpm 👀
-        uses: pnpm/action-setup@v2
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
-
-      - name: Get pnpm store directory 🏪
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - name: Setup pnpm cache 💰
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node_version: 18
+          pnpm_version: 8
 
       - name: Install dependencies ⏬
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build ⏰
         run: pnpm build
