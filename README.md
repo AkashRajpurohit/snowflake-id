@@ -11,7 +11,7 @@
   <a href="https://www.npmjs.com/package/@akashrajpurohit/snowflake-id">
     <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/@akashrajpurohit/snowflake-id">
   </a>
-  <img alt="Visitors count" src="https://visitor-badge.laobi.icu/badge?page_id=@akashrajpurohit~snowflake-id.visitor-badge&style=flat-square&color=0088cc">
+  <img alt="Visitors" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fvc.akashrajpurohit.com%2Fc%2Fakash~gh~snowflake-id&query=count&style=flat&logo=github&label=Visitors&color=066da5">
   <a href="https://github.com/AkashRajpurohit/snowflake-id/actions">
     <img alt="Coverage" src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/AkashRajpurohit/7336f237b82d9581c5f52405f87db531/raw/snowflake-id-coverage.json">
   </a>
